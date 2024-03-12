@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CS445 Project1- Antone Thygerson</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/Project1.css" />
+	<link rel="stylesheet" href="css/introjs.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="container">  <!-- start container  -->
+			<!-- Add google translation -->
+			<div id="google_translate_element"></div>
+		  <script>
+			  function googleTranslateElementInit() {
+				  new google.translate.TranslateElement(
+					  {pageLanguage: 'en'},
+					  'google_translate_element'
+				  );
+			  }
+		  </script>
+		  
+		  <script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+		  <!-- Close google translation -->
+
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapseMenu">
+			<span style="font-size: 18px;">&equiv;</span> 
+		</button>
+
+		<nav class="collapse navbar-collapse" id="collapseMenu"> <!--Start menu bar-->
+			<ul class="nav navbar-nav"> <!-- Start Editing, Settings, Tutorials, Contact-->
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" area-has-popup="true">Edit
+						<span class="caret"></span></a>
+					<ul class="dropdown-menu"><!--start edit submenu-->
+						<li><a href="#" id="menuPop">Pop <span class="pull-right">Alt+o</span></a></li><!--Pop li-->
+						<li><a href="#" id="menuPeek">Peek<span class="pull-right">Alt+e</span></a></li><!--Peek li-->
+						<li><a href="#" id="menuSize">Size<span class="pull-right">Alt+s</span></a></li><!--Size li-->
+						<li><a href="#" id="menuIsEmpty">Is Empty<span class="pull-right">Alt+m</span></a></li>
+						<!--IsEmpty li-->
+						<li role="seperator" class="divider"></li><!--divider li-->
+						<li><a href="#" id="menuClearStack">Clear Stack<span class="pull-right">Alt+x</span></a>
+						</li><!--Clear stack li-->
+						<li><a href="#" id="menuClearLog">Clear Logs<span class="pull-right">Alt+c</span></a></li>
+						<!--clear logs li-->
+					</ul>
+				</li><!--Edit li-->
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" , data-toggle="dropdown" , role="button" , area-has-popup="true"
+						, area-expanded="false">
+						Settings <span class="caret"></span>
+					</a><!--start Settings-->
+					<ul class="dropdown-menu">
+						<li class="dropdown-submenu"> <!--Start language li-->
+							<a href="#">Language</a>
+							<ul class="dropdown-menu">
+								<li><a href="#" id="langEn">English</a></li>
+								<li><a href="#" id="langJa">Japanese</a></li>
+								<li><a href="#" id="langEs">Spanish</a></li>
+							</ul>
+						</li><!--Close language li-->
+						<li role="seperator" class="divider"></li>
+						<li class="dropdown-submenu"><!--Start font face-->
+							<a href="#">Font Face</a>
+							<ul class="dropdown-menu">
+								<li><a href="#" id="fontArial">Arial</a></li>
+								<li><a href="#" id="fontTimesNewRoman">Times New Roman</a></li>
+								<li><a href="#" id="fontCalibri">Calibri</a></li>
+							</ul>
+						</li><!--close font face li-->
+						<li role="seperator" class="divider"></li>
+						<li class="dropdown-submenu"><!--Start font style-->
+							<a href="#">Font Style</a>
+							<ul class="dropdown-menu">
+								<li><a href="#" id="styleBold"><input type="checkbox" id="checkBold">Bold</a></li>
+								<li><a href="#" id="styleItalic"><input type="checkbox" id="checkItalic">Italicize</a>
+								</li>
+								<li><a href="#" id="styleUnderline"><input type="checkbox"
+											id="checkUnderline">Underline</a></li>
+							</ul>
+						</li><!--Close font style-->
+						<li role="seperator" class="divider"></li>
+						<li class="dropdown-submenu"><!--start size li-->
+							<a href="#">Font Size</a>
+							<ul class="dropdown-menu">
+								<li><a href="#" id="fontSizeIncrease">+ 2</a></li>
+								<li><a href="#" id="fontSizeDecrease">- 2</a></li>
+							</ul>
+						</li><!--close size li-->
+					</ul>
+				</li><!--Settings li-->
+				<li><a href="#" onclick="introJs().start()" data-localize="menuBar.tutorial">Tutorial</a></li>
+				<!--Tutorials li-->
+				<li><a href="#" onclick="openContactPopup()">Contact</a></li><!--Contact li-->
+			</ul> <!-- Close Editing, Settings, Tutorials, Contact-->
+		</nav><!--Close menu bar-->
+	</div>
+
+	<div class="container"><!--Start container-->
+		<h1 class="text-center" data-step="1" data-intro="Welcome! This website is to show the use of a stack!">Stack
+			Demo</h1>
+		<div class="row">
+			<div class="col-xs-3"><!--start input column-->
+				<ul class="nav text-center actionBar"> <!--start unorder list-->
+					<li><label class="control-label">Add to stack</label></li>
+					<li><input type="number" class="form-control" placeholder="Enter a number" id="inputNumber"
+							data-step="2" data-intro="Enter a number to add to the stack" data-toggle="tooltip"></li>
+					<li><button type="button" class="btn btn0default btn-block" id="btnPush" data-step="3"
+							data-intro="Click this button to push a number to the top of the stack!" data-toggle="tooltip">Push</button></li>
+					<li><button type="button" class="btn btn0default btn-block" id="btnPop" data-step="4"
+							data-intro="Click this button to remove the top element from the stack!" data-toggle="tooltip">Pop</button></li>
+					<li><button type="button" class="btn btn0default btn-block" id="btnPeek" data-step="5"
+							data-intro="Click this button to reveal the top element of the stack!" data-toggle="tooltip">Peek</button></li>
+					<li><button type="button" class="btn btn0default btn-block" id="btnSize" data-step="6"
+							data-intro="Click this button to reveal the total elements on the stack!" data-toggle="tooltip">Size</button></li>
+					<li><button type="button" class="btn btn0default btn-block" id="btnIsEmpty" data-step="7"
+							data-intro="Click this button to reveal if the stack is empty or not!" data-toggle="tooltip">IsEmpty</button></li>
+				</ul> <!--close unorder list-->
+			</div><!--close input column-->
+			<div class="col-xs-9"><!--Start textArea column-->
+				<div class="form-group"><!--Start showStack-->
+					<label class="control-label" for="showStack">Current Stack</label>
+					<textArea style="height:200px" id="showStack" class="form-control" data-step="8"
+						data-intro="This area is to display how each element is pushed into the stack!"></textArea>
+				</div><!--close showStack-->
+				<div class="form-group"><!--Start showlog-->
+					<label class="control-label" for="showLog">Show Logs</label>
+					<textArea style="height:200px" id="showLog" class="form-control" data-step="9"
+						data-intro="This area is to display the Stack log!"></textArea>
+				</div><!--Close show-log-->
+			</div><!--close textArea column-->
+			</div><!--close row-->
+		</div><!--close container-->
+
+		<div id="contactModal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Contact</h4>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<!-- YouTube Video -->
+							<div class="col-md-6">
+								<iframe width="100%" height="315" src="https://www.youtube.com/embed/o4Om_3QAjX0"
+									frameborder="0" allowfullscreen></iframe>
+							</div>
+							<!-- Contact Info -->
+							<div class="col-md-6">
+								<h3>Name: Antone Thygerson</h3>
+								<p>Email: arthygerson@bsu.edu</p>
+								<p>Phone: 765-744-4906</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--when I tried moving this to a .js folder it wouldn't work-->
+		<script>
+			function openContactPopup() {
+				$('#contactModal').modal('show');
+			}
+		</script>
+		<script src="js/intro.js"> </script>
+		<script src="js/Project1.js"> </script>
+		<script src="js/lang.js"> </script>
+		<script src="js/font.js"> </script>
+	</body>
+</html>
